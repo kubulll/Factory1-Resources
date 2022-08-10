@@ -86,7 +86,7 @@ public class CommandF0R extends CommandBase
                     {
                         for (IOreData oreData : data)
                         {
-                            sender.sendMessage(new TextComponentTranslation(oreData.createOreItem(1).getUnlocalizedName() + ".name").appendSibling(new TextComponentTranslation("txt.f0r.command.query.data.amount", oreData.getOreAmount())));
+                            sender.sendMessage(new TextComponentTranslation(oreData.createOreItem(1).getTranslationKey() + ".name").appendSibling(new TextComponentTranslation("txt.f0r.command.query.data.amount", oreData.getOreAmount())));
                         }
                     }
                 }

@@ -19,7 +19,7 @@ public class BlockElectricalDrillComponent extends Block
     {
         super(Material.IRON);
         this.setRegistryName(F0RRegistryNames.asLocation(F0RRegistryNames.drillComponent));
-        this.setUnlocalizedName(this.getRegistryName().toString().replace(':', '.'));
+        this.setTranslationKey(this.getRegistryName().toString().replace(':', '.'));
         this.setHardness(3);
         this.setResistance(10);
         this.setCreativeTab(F0RCreativeTabs.tabF0R);

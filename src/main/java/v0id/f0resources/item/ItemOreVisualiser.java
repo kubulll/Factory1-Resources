@@ -17,7 +17,7 @@ public class ItemOreVisualiser extends Item
     {
         super();
         this.setRegistryName(F0RRegistryNames.asLocation(F0RRegistryNames.oreVisualizer));
-        this.setUnlocalizedName(this.getRegistryName().toString().replace(':', '.'));
+        this.setTranslationKey(this.getRegistryName().toString().replace(':', '.'));
         this.setMaxStackSize(1);
         this.setCreativeTab(F0RCreativeTabs.tabF0R);
     }

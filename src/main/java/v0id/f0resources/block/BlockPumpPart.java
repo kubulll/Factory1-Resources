@@ -29,7 +29,7 @@ public class BlockPumpPart extends Block
     {
         super(Material.IRON);
         this.setRegistryName(F0RRegistryNames.asLocation(F0RRegistryNames.pumpPart));
-        this.setUnlocalizedName(this.getRegistryName().toString().replace(':', '.'));
+        this.setTranslationKey(this.getRegistryName().toString().replace(':', '.'));
         this.setHardness(3);
         this.setResistance(10);
         this.setCreativeTab(null);

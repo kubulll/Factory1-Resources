@@ -107,8 +107,8 @@ public class TileBurnerDrill extends AbstractDrill implements ITickable
         super.update();
         if (this.isCenter && this.world.isRemote && this.hasFuel)
         {
-            EnumFacing facing = EnumFacing.getHorizontal(this.world.rand.nextInt(4));
-            this.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, this.pos.getX() + 1F + facing.getFrontOffsetX() / 3F, this.pos.getY() + 1.5F, this.pos.getZ() + 1F + facing.getFrontOffsetZ() / 3F, 0, 0.1F, 0);
+            //EnumFacing facing = EnumFacing.getHorizontal(this.world.rand.nextInt(4));
+            //this.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, this.pos.getX() + 1F + facing.getFrontOffsetX() / 3F, this.pos.getY() + 1.5F, this.pos.getZ() + 1F + facing.getFrontOffsetZ() / 3F, 0, 0.1F, 0);
         }
     }
 

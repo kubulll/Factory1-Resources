@@ -21,16 +21,16 @@ public class ItemDrillHead extends Item
         allDrillHeads.add(this);
         this.material = entry;
         this.setRegistryName(F0RRegistryNames.asLocation("item_drill_head." + entry.name.toLowerCase().replace(' ', '_')));
-        this.setUnlocalizedName("f0-resources.item.drill_head");
+        this.setTranslationKey("f0-resources.item.drill_head");
         this.setCreativeTab(F0RCreativeTabs.tabF0R);
         this.setMaxStackSize(1);
         this.setMaxDamage(entry.durability);
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack stack)
+    public String getTranslationKey(ItemStack stack)
     {
-        return super.getUnlocalizedName(stack) + (this.material.isUnlocalized ? ('.' + this.material.name) : "");
+        return super.getTranslationKey(stack) + (this.material.isUnlocalized ? ('.' + this.material.name) : "");
     }
 
     @Override

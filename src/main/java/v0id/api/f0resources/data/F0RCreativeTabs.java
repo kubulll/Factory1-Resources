@@ -8,8 +8,7 @@ public class F0RCreativeTabs
     public static final CreativeTabs tabF0R = new CreativeTabs(F0RRegistryNames.MODID)
     {
         @Override
-        public ItemStack getTabIconItem()
-        {
+        public ItemStack createIcon() {
             return new ItemStack(F0RItems.prospectorsPick);
         }
     };
