@@ -1,4 +1,12 @@
-# Factory0 - Resources
+# Factory1 - Resources
+
+This is a fork of Factory0 that updates the mod to run on latest Forge as well as adding various nice-to-have-features.
+
+.
+.
+.
+
+# ORIGINAL DESCRIPTION:
 
 Factory 0 - resources is a mod that adds ores to your world. But it does it differently from other mods - it adds the ores to the chunk directly as an abstract number rather then adding them as blocks in a world.
 These ores can then be extracted from the chunk using a Deep Core Drill.
