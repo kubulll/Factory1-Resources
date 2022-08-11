@@ -21,6 +21,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.commons.lang3.ArrayUtils;
 import v0id.f0resources.config.F0RConfig;
+import v0id.f0resources.item.ItemDrillHead;
 import v0id.f0resources.network.F0RNetwork;
 
 import javax.annotation.Nullable;
@@ -64,7 +65,8 @@ public class TileDrill extends AbstractDrill implements ITickable
     @Override
     public boolean consumePower(boolean simulate)
     {
-        return this.energyStorage.extractEnergy(F0RConfig.drillEnergyConsumption, simulate) >= F0RConfig.drillEnergyConsumption;
+        ItemStack head = this.getDrillHead();
+        return this.energyStorage.extractEnergy(((ItemDrillHead) head.getItem()).material.energy, simulate) >= ((ItemDrillHead) head.getItem()).material.energy;
     }
 
     @Override

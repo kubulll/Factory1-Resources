@@ -23,32 +23,32 @@ public class DrillMaterialEntry
     public static DrillMaterialEntry[] allEntries = new DrillMaterialEntry[0];
     public static DrillMaterialEntry[] defaults = new DrillMaterialEntry[]{
             // Vanilla
-            new DrillMaterialEntry("f0r.wood", true, 60, 0x6b511f, 0, 0.5F),
-            new DrillMaterialEntry("f0r.stone", true, 132, 0x7f7f7f, 1, 0.75F),
-            new DrillMaterialEntry("f0r.iron", true, 251, 0xd8d8d8, 2, 1F),
-            new DrillMaterialEntry("f0r.gold", true, 33, 0xeaee57, 1, 5F),
-            new DrillMaterialEntry("f0r.diamond", true, 1562, 0x33ebcb, 3, 1.5F),
+            new DrillMaterialEntry("f0r.wood", true, 60, 0x6b511f, 0, 0.5F, 10),
+            new DrillMaterialEntry("f0r.stone", true, 132, 0x7f7f7f, 1, 0.75F, 1000),
+            new DrillMaterialEntry("f0r.iron", true, 251, 0xd8d8d8, 2, 1F, 1000),
+            new DrillMaterialEntry("f0r.gold", true, 33, 0xeaee57, 1, 5F, 1000),
+            new DrillMaterialEntry("f0r.diamond", true, 1562, 0x33ebcb, 3, 1.5F, 1000),
 
             // Thermal Expansion
-            new DrillMaterialEntry("f0r.copper", true, 176, 0xffae58, 1, 0.75F),
-            new DrillMaterialEntry("f0r.tin", true, 150, 0xc7e6f2, 1, 0.6F),
-            new DrillMaterialEntry("f0r.silver", true, 75, 0xcfedf4, 1, 2F),
-            new DrillMaterialEntry("f0r.lead", true, 100, 0x3b466d, 1, 0.4F),
-            new DrillMaterialEntry("f0r.aluminum", true, 225, 0xd4d4df, 1, 1F),
-            new DrillMaterialEntry("f0r.nickel", true, 300, 0xefe9b5, 2, 0.9F),
-            new DrillMaterialEntry("f0r.platinum", true, 1400, 0xc6f0ff, 4, 4F),
-            new DrillMaterialEntry("f0r.steel", true, 400, 0x959595, 2, 1.1F),
-            new DrillMaterialEntry("f0r.electrum", true, 100, 0xe8e27c, 0, 1.5F),
-            new DrillMaterialEntry("f0r.invar", true, 425, 0xd7dbd9, 2, 1F),
-            new DrillMaterialEntry("f0r.bronze", true, 325, 0xef9a36, 2, 1F),
-            new DrillMaterialEntry("f0r.constantan", true, 275, 0xebcc91, 2, 1F),
-            new DrillMaterialEntry("f0r.enderium", true, 1841, 0x0f5f5f, 4, 2F),
+            new DrillMaterialEntry("f0r.copper", true, 176, 0xffae58, 1, 0.75F, 1000),
+            new DrillMaterialEntry("f0r.tin", true, 150, 0xc7e6f2, 1, 0.6F, 1000),
+            new DrillMaterialEntry("f0r.silver", true, 75, 0xcfedf4, 1, 2F, 1000),
+            new DrillMaterialEntry("f0r.lead", true, 100, 0x3b466d, 1, 0.4F, 1000),
+            new DrillMaterialEntry("f0r.aluminum", true, 225, 0xd4d4df, 1, 1F, 1000),
+            new DrillMaterialEntry("f0r.nickel", true, 300, 0xefe9b5, 2, 0.9F, 1000),
+            new DrillMaterialEntry("f0r.platinum", true, 1400, 0xc6f0ff, 4, 4F, 1000),
+            new DrillMaterialEntry("f0r.steel", true, 400, 0x959595, 2, 1.1F, 1000),
+            new DrillMaterialEntry("f0r.electrum", true, 100, 0xe8e27c, 0, 1.5F, 1000),
+            new DrillMaterialEntry("f0r.invar", true, 425, 0xd7dbd9, 2, 1F, 1000),
+            new DrillMaterialEntry("f0r.bronze", true, 325, 0xef9a36, 2, 1F, 1000),
+            new DrillMaterialEntry("f0r.constantan", true, 275, 0xebcc91, 2, 1F, 1000),
+            new DrillMaterialEntry("f0r.enderium", true, 1841, 0x0f5f5f, 4, 2F, 1000),
 
             // Ender IO
-            new DrillMaterialEntry("f0r.electricalSteel", true, 325, 0xd8d8d8, 2, 1F),
-            new DrillMaterialEntry("f0r.darkSteel", true, 1241, 0x5a5a5a, 3, 1.5F),
-            new DrillMaterialEntry("f0r.soularium", true, 456, 0x756048, 1, 1F),
-            new DrillMaterialEntry("f0r.vibrant", true, 225, 0xfae373, 1, 8F),
+            new DrillMaterialEntry("f0r.electricalSteel", true, 325, 0xd8d8d8, 2, 1F, 1000),
+            new DrillMaterialEntry("f0r.darkSteel", true, 1241, 0x5a5a5a, 3, 1.5F, 1000),
+            new DrillMaterialEntry("f0r.soularium", true, 456, 0x756048, 1, 1F, 1000),
+            new DrillMaterialEntry("f0r.vibrant", true, 225, 0xfae373, 1, 8F, 1000),
     };
 
     public String name;
@@ -57,8 +57,9 @@ public class DrillMaterialEntry
     public int color;
     public int tier;
     public float speed;
+    public int energy;
 
-    public DrillMaterialEntry(String name, boolean isUnlocalized, int durability, int color, int tier, float speed)
+    public DrillMaterialEntry(String name, boolean isUnlocalized, int durability, int color, int tier, float speed, int energy)
     {
         this.name = name;
         this.isUnlocalized = isUnlocalized;
@@ -66,6 +67,7 @@ public class DrillMaterialEntry
         this.color = color;
         this.tier = tier;
         this.speed = speed;
+        this.energy = energy;
     }
 
     public static void parse()
