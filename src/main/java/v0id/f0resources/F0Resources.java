@@ -29,9 +29,9 @@ import v0id.f0resources.server.CommandF0R;
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
 import java.util.Arrays;
-import java.util.stream.Collectors;
+//import java.util.stream.Collectors;
 
-@Mod(modid = F0RRegistryNames.MODID, useMetadata = true, certificateFingerprint = "43787005475f132f5fc1e851b9247fda75ed5d52")
+@Mod(modid = F0RRegistryNames.MODID, name = F0RRegistryNames.MOD_NAME, version = F0RRegistryNames.VERSION, acceptedMinecraftVersions = F0RRegistryNames.MCVERSION, useMetadata = true)
 public class F0Resources
 {
     static
@@ -97,7 +97,7 @@ public class F0Resources
         event.registerServerCommand(new CommandF0R());
     }
 
-    @Mod.EventHandler
+    /*@Mod.EventHandler
     public static void fingerprintViolated(FMLFingerprintViolationEvent event)
     {
         if (event.isDirectory())
@@ -108,7 +108,7 @@ public class F0Resources
         {
             modLogger.error("Factory0-Resources fingerprint doesn't match! Expected {}, got {}!", event.getExpectedFingerprint(), event.getFingerprints().stream().collect(Collectors.joining(" , ")));
         }
-    }
+    }*/
 
     private void setDevEnvironment()
     {

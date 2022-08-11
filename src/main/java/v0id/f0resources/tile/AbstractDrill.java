@@ -88,7 +88,7 @@ public abstract class AbstractDrill extends TileMultiblock implements ITickable,
                                     this.progress += ((ItemDrillHead) head.getItem()).material.speed;
                                     if (this.progress >= this.getRequiredProgress())
                                     {
-                                        this.progress -= this.getRequiredProgress();
+                                        this.progress %= this.getRequiredProgress();
                                         this.tryProduceResource(((ItemDrillHead) head.getItem()).material);
                                         this.tryCreateMinedOre(((ItemDrillHead) head.getItem()).material);
                                     }

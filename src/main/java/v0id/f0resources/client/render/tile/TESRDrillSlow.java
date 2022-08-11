@@ -13,6 +13,7 @@ import org.lwjgl.opengl.GL11;
 import v0id.api.f0resources.client.model.WavefrontObject;
 import v0id.api.f0resources.data.F0RTextures;
 import v0id.f0resources.config.DrillMaterialEntry;
+import v0id.f0resources.config.F0RConfig;
 import v0id.f0resources.item.ItemDrillHead;
 import v0id.f0resources.tile.TileDrill;
 
@@ -50,7 +51,12 @@ public class TESRDrillSlow extends TileEntitySpecialRenderer<TileDrill>
             ItemStack is = te.inventory.getStackInSlot(0);
             if (!is.isEmpty() && is.getItem() instanceof ItemDrillHead)
             {
-                float rotation = te.isRotating ? (te.getWorld().getWorldTime() % 45) * 8F + partialTicks * 8 : 0F;
+                float tempVar = (te.getWorld().getWorldTime() % 45) * 8F + partialTicks * 8;
+                float tempVar2 = tempVar * ((ItemDrillHead) te.getDrillHead().getItem()).material.speed * F0RConfig.drillRotationAnimationMultiplier;
+                float tempVar3 = Math.max(0, Math.min(1000.0f, tempVar2));
+
+                float rotation = te.isRotating ? tempVar3 : 0F;
+
                 DrillMaterialEntry materialEntry = ((ItemDrillHead) is.getItem()).material;
                 float r = ((materialEntry.color & 0xff0000) >> 16) / 255F;
                 float g = ((materialEntry.color & 0xff00) >> 8) / 255F;

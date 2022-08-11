@@ -12,6 +12,7 @@ import org.lwjgl.util.vector.Vector3f;
 import v0id.api.f0resources.client.model.WavefrontObject;
 import v0id.f0resources.client.render.RenderUtils;
 import v0id.f0resources.config.DrillMaterialEntry;
+import v0id.f0resources.config.F0RConfig;
 import v0id.f0resources.item.ItemDrillHead;
 import v0id.f0resources.tile.TileBurnerDrill;
 
@@ -49,7 +50,12 @@ public class TESRBurnerDrill extends FastTESR<TileBurnerDrill>
             ItemStack is = te.inventory.getStackInSlot(0);
             if (!is.isEmpty() && is.getItem() instanceof ItemDrillHead)
             {
-                float rotation = te.isRotating ? (float)Math.toRadians((te.getWorld().getWorldTime() % 45) * 8F + partialTicks * 8) : 0F;
+                float tempVar = (float)Math.toRadians((te.getWorld().getWorldTime() % 45) * 8F + partialTicks * 8);
+                float tempVar2 = tempVar * ((ItemDrillHead) te.getDrillHead().getItem()).material.speed * F0RConfig.drillRotationAnimationMultiplier;
+                float tempVar3 = Math.max(0, Math.min(1000.0f, tempVar2));
+
+                float rotation = te.isRotating ? tempVar3 : 0F;
+
                 transform = Matrix4f.setIdentity(new Matrix4f());
                 transform = transform.scale(new Vector3f(1F, 1, 1F));
                 transform = transform.rotate(rotation, new Vector3f(0, 1, 0));
