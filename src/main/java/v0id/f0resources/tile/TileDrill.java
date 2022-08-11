@@ -47,7 +47,7 @@ public class TileDrill extends AbstractDrill implements ITickable
     @Override
     public boolean checkBase()
     {
-        Block[] block = Arrays.stream(F0RConfig.requiredBlocks).filter(s -> !Strings.isNullOrEmpty(s)).map(ResourceLocation::new).map(BLOCK_REGISTRY::getValue).filter(Objects::nonNull).toArray(Block[]::new);
+        Block[] block = Arrays.stream(F0RConfig.requiredBlocksDrill).filter(s -> !Strings.isNullOrEmpty(s)).map(ResourceLocation::new).map(BLOCK_REGISTRY::getValue).filter(Objects::nonNull).toArray(Block[]::new);
         for (int dx = -1; dx <= 1; ++dx)
         {
             for (int dz = -1; dz <= 1; ++dz)
@@ -65,8 +65,9 @@ public class TileDrill extends AbstractDrill implements ITickable
     @Override
     public boolean consumePower(boolean simulate)
     {
-        ItemStack head = this.getDrillHead();
-        return this.energyStorage.extractEnergy(((ItemDrillHead) head.getItem()).material.energy, simulate) >= ((ItemDrillHead) head.getItem()).material.energy;
+        int energyConsumption = (int) (F0RConfig.drillEnergyConsumption * ((ItemDrillHead) this.getDrillHead().getItem()).material.energyMultiplier);
+        int clampedValue = Math.max(0, Math.min(Integer.MAX_VALUE, energyConsumption));
+        return this.energyStorage.extractEnergy(clampedValue, simulate) >= clampedValue;
     }
 
     @Override

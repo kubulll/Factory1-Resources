@@ -21,13 +21,21 @@ public class F0RConfig
     @Config.RangeInt(min = 0)
     public static int drillEnergyConsumption = 1024;
 
-    @Config.Comment("The blocks the drill must be placed on to work")
-    public static String[] requiredBlocks = new String[]{
+    @Config.Comment("Whether to use energy only when it's actually able to mine blocks, or always when it has energy.")
+    public static boolean drillSmartMode = true;
+
+    @Config.Comment("The blocks the drills must be placed on to work.")
+    public static String[] requiredBlocksDrill = new String[]{
+            "minecraft:stone"
+    };
+
+    @Config.Comment("The blocks the pump must be placed on to work")
+    public static String[] requiredBlocksPump = new String[]{
             "minecraft:stone"
     };
 
     @Config.Comment("The amount of progress the drill has to accumulate before it produces an ore")
-    public static float drillRequiredProgress = 20F;
+    public static float drillRequiredProgress = 100.0f;
 
     @Config.Comment("The stacksize of the ore item the drill produces.")
     @Config.RangeInt(min = 1)

@@ -1,12 +1,18 @@
 package v0id.f0resources.item;
 
 import com.google.common.collect.Lists;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.IEnergyStorage;
 import v0id.api.f0resources.data.F0RCreativeTabs;
 import v0id.api.f0resources.data.F0RRegistryNames;
 import v0id.f0resources.config.DrillMaterialEntry;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemDrillHead extends Item
@@ -37,5 +43,17 @@ public class ItemDrillHead extends Item
     public String getItemStackDisplayName(ItemStack stack)
     {
         return this.material.isUnlocalized ? super.getItemStackDisplayName(stack) : this.material.name;
+    }
+
+
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+    {
+        super.addInformation(stack, worldIn, tooltip, flagIn);
+        tooltip.add(I18n.format("txt.f0r.drillTooltip.durability") + ": §9" + (this.material.durability - stack.getItemDamage()) + "/" + this.material.durability);
+        tooltip.add(I18n.format("txt.f0r.drillTooltip.speed") + ": " + this.material.speed);
+        tooltip.add(I18n.format("txt.f0r.drillTooltip.energyMultiplier") + ": " + this.material.energyMultiplier);
+        tooltip.add(I18n.format("txt.f0r.drillTooltip.tier") + ": " + this.material.tier);
     }
 }

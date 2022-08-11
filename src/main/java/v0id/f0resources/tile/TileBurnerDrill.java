@@ -49,7 +49,7 @@ public class TileBurnerDrill extends AbstractDrill implements ITickable
     @Override
     public boolean checkBase()
     {
-        Block[] block = Arrays.stream(F0RConfig.requiredBlocks).filter(s -> !Strings.isNullOrEmpty(s)).map(ResourceLocation::new).map(BLOCK_REGISTRY::getValue).filter(Objects::nonNull).toArray(Block[]::new);
+        Block[] block = Arrays.stream(F0RConfig.requiredBlocksDrill).filter(s -> !Strings.isNullOrEmpty(s)).map(ResourceLocation::new).map(BLOCK_REGISTRY::getValue).filter(Objects::nonNull).toArray(Block[]::new);
         return ArrayUtils.contains(block, this.world.getBlockState(this.pos.down()).getBlock()) && ArrayUtils.contains(block,this.world.getBlockState(this.pos.down().south()).getBlock()) && ArrayUtils.contains(block,this.world.getBlockState(this.pos.down().east()).getBlock()) && ArrayUtils.contains(block,this.world.getBlockState(this.pos.down().south().east()).getBlock());
     }
 

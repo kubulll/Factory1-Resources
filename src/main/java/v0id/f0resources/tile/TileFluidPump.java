@@ -150,7 +150,7 @@ public class TileFluidPump extends TileMultiblock implements ITickable, IAnimate
 
     public boolean checkBase()
     {
-        Block[] block = Arrays.stream(F0RConfig.requiredBlocks).filter(s -> !Strings.isNullOrEmpty(s)).map(ResourceLocation::new).map(TileDrill.BLOCK_REGISTRY::getValue).filter(Objects::nonNull).toArray(Block[]::new);
+        Block[] block = Arrays.stream(F0RConfig.requiredBlocksPump).filter(s -> !Strings.isNullOrEmpty(s)).map(ResourceLocation::new).map(TileDrill.BLOCK_REGISTRY::getValue).filter(Objects::nonNull).toArray(Block[]::new);
         for (int dx = -1; dx <= 1; ++dx)
         {
             for (int dz = -1; dz <= 1; ++dz)

@@ -57,7 +57,11 @@ public abstract class AbstractDrill extends TileMultiblock implements ITickable,
                     {
                         if (this.consumePower(true))
                         {
-                            this.consumePower(false);
+                            if(!F0RConfig.drillSmartMode) {
+                                // Drill consumes power always
+                                this.consumePower(false);
+                            }
+
                             if (this.outputPos != BlockPos.ORIGIN)
                             {
                                 if (this.progress < 0.001F)
@@ -67,11 +71,20 @@ public abstract class AbstractDrill extends TileMultiblock implements ITickable,
 
                                 if (this.minedOre.isEmpty())
                                 {
-                                    this.setRotating(false);
+                                    if(!F0RConfig.drillSmartMode) {
+                                        this.setRotating(true);
+                                    }
                                 }
+
                                 else
                                 {
                                     this.setRotating(true);
+
+                                    if(F0RConfig.drillSmartMode) {
+                                        // This should make it so the drill only consumes power when it can actually mine stuff, not always
+                                        this.consumePower(false);
+                                    }
+
                                     this.progress += ((ItemDrillHead) head.getItem()).material.speed;
                                     if (this.progress >= this.getRequiredProgress())
                                     {
