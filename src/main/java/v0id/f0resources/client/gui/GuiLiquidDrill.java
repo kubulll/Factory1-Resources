@@ -19,7 +19,7 @@ public class GuiLiquidDrill extends GuiContainer
     public GuiLiquidDrill(InventoryPlayer playerInv, TileLiquidDrill drill)
     {
         super(new ContainerLiquidDrill(playerInv, drill));
-        this.tile = (TileLiquidDrill) drill;
+        this.tile = drill;
     }
 
     @Override

@@ -143,7 +143,7 @@ public class BlockLiquidDrillPart extends Block
                 TileEntity tile = worldIn.getTileEntity(drill.centerPos);
                 if (tile instanceof TileLiquidDrill)
                 {
-                    playerIn.openGui(F0Resources.instance, 0, worldIn, tile.getPos().getX(), tile.getPos().getY(), tile.getPos().getZ());
+                    playerIn.openGui(F0Resources.instance, 4, worldIn, tile.getPos().getX(), tile.getPos().getY(), tile.getPos().getZ());
                     return true;
                 }
             }

@@ -79,7 +79,11 @@ public class TileLiquidDrill extends AbstractDrill implements ITickable
     public boolean consumePower(boolean simulate) {
         int fuelConsumption = (int) (F0RConfig.liquidDrillFuelConsumption * ((ItemDrillHead) this.getDrillHead().getItem()).material.energyMultiplier);
         int clampedValue = Math.max(1, Math.min(Integer.MAX_VALUE, fuelConsumption));
-        return this.fluidTank.drain(clampedValue, simulate).amount >= clampedValue;
+        if (clampedValue <= this.fluidTank.getFluidAmount()) {
+            return this.fluidTank.drain(clampedValue, simulate).amount >= clampedValue;
+        } else {
+            return false;
+        }
     }
 
 
