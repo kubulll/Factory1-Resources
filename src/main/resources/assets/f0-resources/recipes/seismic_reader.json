@@ -1,0 +1,31 @@
+{
+  "result": {
+    "item": "f0-resources:item_ore_visualizer",
+    "data": 0,
+    "count": 1
+  },
+  "pattern": [
+    "BDB",
+    "EME",
+    "ESE"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "B": {
+        "item": "minecraft:beacon"
+    },
+    "D": {
+        "item": "minecraft:skull",
+        "data": 5
+    },
+    "M": {
+        "item": "minecraft:map"
+    },
+    "E": {
+        "item": "#BLOCKEMERALD"
+    },
+    "S": {
+        "item": "f0-resources:item_advanced_scanner"
+    }
+  }
+}

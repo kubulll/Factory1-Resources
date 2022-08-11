@@ -1,16 +1,14 @@
-[
-{
+[{
   "modid": "f0-resources",
-  "name": "Factory0 - Resources",
-  "description": "Adding resources to the deep core of the world extractable with special machinery starting... now!",
-  "version": "1.0.3.1",
+  "name": "Factory1 - Resources",
+  "description": "A fork of the Factory0 - Resources mod improving upon the original with the addition of new features and bugfixes.",
+  "version": "2.1.0",
   "mcversion": "1.12.2",
-  "url": "",
+  "url": "https://github.com/kubulll/Factory1-Resources",
   "updateUrl": "",
-  "authorList": ["V0idWa1k3r"],
-  "credits": "The Forge and FML guys for making MinecraftForge.",
+  "authorList": ["V0idWa1k3r", "Gliese-832-c", "kubulll"],
+  "credits": "V0idWa1k3r for making the original mod that this fork is based upon.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
-}
-]
+}]
