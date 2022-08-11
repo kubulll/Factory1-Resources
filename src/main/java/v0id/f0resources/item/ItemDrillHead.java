@@ -19,6 +19,8 @@ public class ItemDrillHead extends Item
 {
     public final DrillMaterialEntry material;
 
+    public boolean isIndestructible = false;
+
     public static final List<ItemDrillHead> allDrillHeads = Lists.newArrayList();
 
     public ItemDrillHead(DrillMaterialEntry entry)
@@ -30,7 +32,13 @@ public class ItemDrillHead extends Item
         this.setTranslationKey("f0-resources.item.drill_head");
         this.setCreativeTab(F0RCreativeTabs.tabF0R);
         this.setMaxStackSize(1);
-        this.setMaxDamage(entry.durability);
+
+        if (entry.durability < 0) {
+            isIndestructible = true;
+            this.setMaxDamage(Integer.MAX_VALUE);
+        } else {
+            this.setMaxDamage(entry.durability);
+        }
     }
 
     @Override
@@ -51,7 +59,11 @@ public class ItemDrillHead extends Item
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        tooltip.add(I18n.format("txt.f0r.drillTooltip.durability") + ": §9" + (this.material.durability - stack.getItemDamage()) + "/" + this.material.durability);
+        if (!isIndestructible) {
+            tooltip.add(I18n.format("txt.f0r.drillTooltip.durability") + ": §9" + (this.material.durability - stack.getItemDamage()) + "/" + this.material.durability);
+        } else {
+            tooltip.add(I18n.format("txt.f0r.drillTooltip.durability") + ": §5∞");
+        }
         tooltip.add(I18n.format("txt.f0r.drillTooltip.speed") + ": " + this.material.speed);
         tooltip.add(I18n.format("txt.f0r.drillTooltip.energyMultiplier") + ": " + this.material.energyMultiplier);
         tooltip.add(I18n.format("txt.f0r.drillTooltip.tier") + ": " + this.material.tier);

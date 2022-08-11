@@ -103,3 +103,5 @@ txt.f0r.drillTooltip.speed=Mining Speed
 txt.f0r.drillTooltip.durability=Durability
 txt.f0r.drillTooltip.tier=Mining Tier
 txt.f0r.drillTooltip.energyMultiplier=Power Usage Multiplier
+
+item.f0-resources.item.drill_head.f0r.creative.name=Creative Drill Head

@@ -49,6 +49,9 @@ public class DrillMaterialEntry
             new DrillMaterialEntry("f0r.darkSteel", true, 1241, 0x5a5a5a, 3, 1.5F, 1.5f),
             new DrillMaterialEntry("f0r.soularium", true, 456, 0x756048, 1, 1F, 1.0f),
             new DrillMaterialEntry("f0r.vibrant", true, 225, 0xfae373, 1, 8F, 8.0f),
+
+            // Creative
+            new DrillMaterialEntry("f0r.creative", true, -1, 0xff00ff, Integer.MAX_VALUE, Float.MAX_VALUE, 0.0f)
     };
 
     public String name;

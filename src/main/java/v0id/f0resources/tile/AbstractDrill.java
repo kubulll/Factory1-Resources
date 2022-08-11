@@ -228,12 +228,13 @@ public abstract class AbstractDrill extends TileMultiblock implements ITickable,
                     }
 
                     ItemStack head = this.getDrillHead();
-                    if (head.getMaxDamage() != 0)
-                    {
-                        head.setItemDamage(head.getItemDamage() + F0RConfig.drillHeadDamage);
-                        if (head.getItemDamage() >= head.getMaxDamage())
-                        {
-                            this.setDrillHead(ItemStack.EMPTY);
+                    // Makes it so indestructible drills don't take damage
+                    if (!((ItemDrillHead) head.getItem()).isIndestructible) {
+                        if (head.getMaxDamage() != 0) {
+                            head.setItemDamage(head.getItemDamage() + F0RConfig.drillHeadDamage);
+                            if (head.getItemDamage() >= head.getMaxDamage()) {
+                                this.setDrillHead(ItemStack.EMPTY);
+                            }
                         }
                     }
                 }
