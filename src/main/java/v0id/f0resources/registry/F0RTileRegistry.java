@@ -9,6 +9,7 @@ import v0id.api.f0resources.data.F0RRegistryNames;
 import v0id.f0resources.tile.TileBurnerDrill;
 import v0id.f0resources.tile.TileDrill;
 import v0id.f0resources.tile.TileFluidPump;
+import v0id.f0resources.tile.TileLiquidDrill;
 
 @Mod.EventBusSubscriber(modid = F0RRegistryNames.MODID)
 public class F0RTileRegistry
@@ -19,5 +20,7 @@ public class F0RTileRegistry
         GameRegistry.registerTileEntity(TileDrill.class, F0RRegistryNames.asLocation("drill"));
         GameRegistry.registerTileEntity(TileBurnerDrill.class, F0RRegistryNames.asLocation("burner_drill"));
         GameRegistry.registerTileEntity(TileFluidPump.class, F0RRegistryNames.asLocation("fluid_pump"));
+
+        GameRegistry.registerTileEntity(TileLiquidDrill.class, F0RRegistryNames.asLocation("liquid_drill"));
     }
 }

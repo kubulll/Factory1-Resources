@@ -21,6 +21,14 @@ public class F0RConfig
     @Config.RangeInt(min = 0)
     public static int drillEnergyConsumption = 1024;
 
+    @Config.Comment("The amount of fluid that the liquid-fueled drill's fuel tank can store.")
+    @Config.RangeInt(min = 0)
+    public static int liquidDrillTankStorage = 16000;
+
+    @Config.Comment("The amount of fuel that the liquid-fueled drill consumes per tick.")
+    @Config.RangeInt(min = 0)
+    public static int liquidDrillFuelConsumption = 4;
+
     @Config.Comment("Whether to use energy only when it's actually able to mine blocks, or always when it has energy.")
     public static boolean drillSmartMode = true;
 

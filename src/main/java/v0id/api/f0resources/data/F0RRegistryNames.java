@@ -18,7 +18,10 @@ public class F0RRegistryNames
         burnerDrillComponent                                                                    = "burner_drill_component",
         burnerDrillPart                                                                         = "burner_drill_part",
         pumpComponent                                                                           = "pump_component",
-        pumpPart                                                                                = "pump_part";
+        pumpPart                                                                                = "pump_part",
+
+        liquidDrillComponent                                                                    = "liquid_drill_component",
+        liquidDrillPart                                                                         = "liquid_drill_part";
 
     public static final String
         prospectorsPick                                                                         = "item_prospectors_pick",
