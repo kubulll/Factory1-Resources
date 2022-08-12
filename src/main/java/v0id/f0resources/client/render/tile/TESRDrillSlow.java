@@ -27,6 +27,7 @@ public class TESRDrillSlow extends TileEntitySpecialRenderer<TileDrill>
         {
             TESRDrill.model.load(Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("f0-resources", "models/block/drill.obj")).getInputStream());
             TESRDrill.modelHead.load(Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("f0-resources", "models/block/drill_head.obj")).getInputStream());
+            TESRDrill.modelShaft.load(Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("f0-resources", "models/block/drill_shaft.obj")).getInputStream());
         }
         catch (IOException e)
         {
@@ -40,38 +41,52 @@ public class TESRDrillSlow extends TileEntitySpecialRenderer<TileDrill>
     {
         if (te.isCenter)
         {
+            // Main Model
             Minecraft.getMinecraft().renderEngine.bindTexture(F0RTextures.textureDrill);
             GlStateManager.pushMatrix();
             GlStateManager.translate(x + 0.5F, y, z + 0.5F);
-            GlStateManager.scale(0.75F, 1F, 0.75F);
+            GlStateManager.scale(1.0f, 1.0f, 1.0f);
             BufferBuilder bb = Tessellator.getInstance().getBuffer();
             bb.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_NORMAL);
             TESRDrill.model.putVertices(bb);
             Tessellator.getInstance().draw();
+
+            // Drill Head
             ItemStack is = te.inventory.getStackInSlot(0);
+
+            float rotation = 0.0f;
+
             if (!is.isEmpty() && is.getItem() instanceof ItemDrillHead)
             {
                 float tempVar = (te.getWorld().getWorldTime() % 45) * 8F + partialTicks * 8;
                 float tempVar2 = tempVar * ((ItemDrillHead) te.getDrillHead().getItem()).material.speed * F0RConfig.drillRotationAnimationMultiplier;
                 float tempVar3 = Math.max(0, Math.min(1000.0f, tempVar2));
-
-                float rotation = te.isRotating ? tempVar3 : 0F;
+                rotation = te.isRotating ? tempVar3 : 0F;
 
                 DrillMaterialEntry materialEntry = ((ItemDrillHead) is.getItem()).material;
                 float r = ((materialEntry.color & 0xff0000) >> 16) / 255F;
                 float g = ((materialEntry.color & 0xff00) >> 8) / 255F;
                 float b = (materialEntry.color & 0xff) / 255F;
-                GlStateManager.scale(0.75F, 0.75F, 0.75F);
+                GlStateManager.scale(0.5F, 0.5F, 0.5F);
                 GlStateManager.rotate(rotation, 0, 1, 0);
                 Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("minecraft", "textures/blocks/iron_block.png"));
                 bb.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
-                for (WavefrontObject.Vertex vertex : TESRDrill.modelHead.getVertices())
-                {
+                for (WavefrontObject.Vertex vertex : TESRDrill.modelHead.getVertices()) {
                     bb.pos(vertex.position.x, vertex.position.y, vertex.position.z).tex(vertex.uvset.x, 1 - vertex.uvset.y).color(r, g, b, 1F).normal(vertex.normals.x, vertex.normals.y, vertex.normals.z).endVertex();
                 }
-
                 Tessellator.getInstance().draw();
+
+                GlStateManager.scale(2.0F, 2.0f, 2.0f);
             }
+
+            // Drill Shaft
+            GlStateManager.rotate(rotation, 0, 1, 0);
+            Minecraft.getMinecraft().renderEngine.bindTexture(F0RTextures.textureDrillShaft);
+            bb.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
+            for (WavefrontObject.Vertex vertex : TESRDrill.modelShaft.getVertices()) {
+                bb.pos(vertex.position.x, vertex.position.y, vertex.position.z).tex(vertex.uvset.x, 1 - vertex.uvset.y).color(1.0f, 1.0f, 1.0f, 1.0f).normal(vertex.normals.x, vertex.normals.y, vertex.normals.z).endVertex();
+            }
+            Tessellator.getInstance().draw();
 
             GlStateManager.popMatrix();
         }

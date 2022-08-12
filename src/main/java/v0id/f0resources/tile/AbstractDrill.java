@@ -78,19 +78,26 @@ public abstract class AbstractDrill extends TileMultiblock implements ITickable,
 
                                 else
                                 {
-                                    this.setRotating(true);
-
-                                    if(F0RConfig.drillSmartMode) {
-                                        // This should make it so the drill only consumes power when it can actually mine stuff, not always
-                                        this.consumePower(false);
-                                    }
-
-                                    this.progress += ((ItemDrillHead) head.getItem()).material.speed;
-                                    if (this.progress >= this.getRequiredProgress())
+                                    OreEntry oreEntry = OreEntry.findByItem(this.minedOre.getItem(), this.minedOre.getMetadata());
+                                    if (((ItemDrillHead) head.getItem()).material.tier >= oreEntry.tierReq)
                                     {
-                                        this.progress %= this.getRequiredProgress();
-                                        this.tryProduceResource(((ItemDrillHead) head.getItem()).material);
-                                        this.tryCreateMinedOre(((ItemDrillHead) head.getItem()).material);
+                                        this.setRotating(true);
+
+                                        if(F0RConfig.drillSmartMode) {
+                                            // This should make it so the drill only consumes power when it can actually mine stuff, not always
+                                            this.consumePower(false);
+                                        }
+
+                                        this.progress += ((ItemDrillHead) head.getItem()).material.speed;
+                                        if (this.progress >= this.getRequiredProgress())
+                                        {
+                                            this.progress %= this.getRequiredProgress();
+
+                                            this.tryProduceResource(((ItemDrillHead) head.getItem()).material);
+                                            this.tryCreateMinedOre(((ItemDrillHead) head.getItem()).material);
+                                        }
+                                    } else {
+                                        this.setRotating(false);
                                     }
                                 }
                             }

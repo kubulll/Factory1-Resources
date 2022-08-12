@@ -30,8 +30,14 @@ public class GuiLiquidDrill extends GuiContainer
         int i = (this.width - this.xSize) / 2;
         int j = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
+
+        // Fuel Bar
         float fuelValue = (float)this.tile.fluidTank.getFluidAmount() / this.tile.fluidTank.getCapacity();
         this.drawTexturedModalRect(i + 14, j + 14 + (int)((1 - fuelValue) * 62), 176, (int) ((1 - fuelValue) * 62), 12, (int) (fuelValue * 62));
+
+        // Mining Progress Bar
+        float progressValue = this.tile.minedMultiplier / this.tile.getRequiredProgress();
+        this.drawTexturedModalRect(i + 45, j + 68, 0, 166, (int) (progressValue * 86.0f), 3);
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
@@ -45,6 +51,12 @@ public class GuiLiquidDrill extends GuiContainer
         {
             List<String> lines = Lists.newArrayList();
             lines.add(I18n.format("txt.f0r.liquidFuelStored", this.tile.fluidTank.getFluidAmount(), this.tile.fluidTank.getCapacity()));
+            this.drawHoveringText(lines, mouseX, mouseY);
+        }
+        if (mouseX >= i + 40 && mouseX <= i + 63 && mouseY >= j + 63 && mouseY <= j + 76)
+        {
+            List<String> lines = Lists.newArrayList();
+            lines.add(I18n.format("txt.f0r.miningProgress", this.tile.minedMultiplier, this.tile.getRequiredProgress()));
             this.drawHoveringText(lines, mouseX, mouseY);
         }
     }

@@ -1,6 +1,9 @@
 # Version 2.1.0
 - Added the liquid-fueled drill and various config values to configure it
 - Gave the Seismic Reader a crafting recipe
+- Updated the drill's 3D model
+- Added a progress bar to the miner's GUI showing the progress on the block that is being currently mined
+- Fixed an exploit where exchanging the drill head in a running drill to a head with a lower mining tier than required to mine the ore the drill is currently mining would keep using power and playing the rotation animations though not actually mining
 
 # Version 2.0.0
 - Updated the mod to Forge 2847

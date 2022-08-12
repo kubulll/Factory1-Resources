@@ -22,7 +22,9 @@ public class TESRDrill extends FastTESR<TileDrill>
 {
     public static final WavefrontObject model = new WavefrontObject();
     public static final WavefrontObject modelHead = new WavefrontObject();
+    public static final WavefrontObject modelShaft = new WavefrontObject();
     public static TextureAtlasSprite texture;
+    public static TextureAtlasSprite textureShaft;
 
     public TESRDrill()
     {
@@ -30,6 +32,7 @@ public class TESRDrill extends FastTESR<TileDrill>
         {
             model.load(Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("f0-resources", "models/block/drill.obj")).getInputStream());
             modelHead.load(Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("f0-resources", "models/block/drill_head.obj")).getInputStream());
+            modelShaft.load(Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("f0-resources", "models/block/drill_shaft.obj")).getInputStream());
         }
         catch (IOException e)
         {
@@ -43,21 +46,27 @@ public class TESRDrill extends FastTESR<TileDrill>
     {
         if (te.isCenter)
         {
+            // Main Model
             Matrix4f transform = Matrix4f.setIdentity(new Matrix4f());
-            transform = transform.scale(new Vector3f(0.75F, 1, 0.75F));
+            transform = transform.scale(new Vector3f(1.0f, 1.0f, 1.0f));
             Vector3f pos = new Vector3f((float)x + 0.5F, (float)y, (float)z + 0.5F);
             RenderUtils.renderObj(buffer, model, pos, transform, new float[]{ 1, 1, 1, 1 }, new int[]{ 240, 0 }, () -> texture);
+
+            // Drill Head
             ItemStack is = te.inventory.getStackInSlot(0);
+
+            float rotation = 0.0f;
+
             if (!is.isEmpty() && is.getItem() instanceof ItemDrillHead)
             {
                 float tempVar = (float)Math.toRadians((te.getWorld().getWorldTime() % 45) * 8F + partialTicks * 8);
                 float tempVar2 = tempVar * ((ItemDrillHead) te.getDrillHead().getItem()).material.speed * F0RConfig.drillRotationAnimationMultiplier;
                 float tempVar3 = Math.max(0, Math.min(1000.0f, tempVar2));
-
-                float rotation = te.isRotating ? tempVar3 : 0F;
+                rotation = te.isRotating ? tempVar3 : 0F;
 
                 transform = Matrix4f.setIdentity(new Matrix4f());
-                transform = transform.scale(new Vector3f(0.55F, 1, 0.55F));
+                //transform = transform.scale(new Vector3f(0.55F, 1, 0.55F));
+                transform = transform.scale(new Vector3f(0.5F, 1, 0.5F));
                 transform = transform.rotate(rotation, new Vector3f(0, 1, 0));
                 pos = new Vector3f((float)x + 0.5F, (float)y, (float)z + 0.5F);
                 DrillMaterialEntry materialEntry = ((ItemDrillHead) is.getItem()).material;
@@ -66,6 +75,13 @@ public class TESRDrill extends FastTESR<TileDrill>
                 float b = (materialEntry.color & 0xff) / 255F;
                 RenderUtils.renderObj(buffer, modelHead, pos, transform, new float[]{ r, g, b, 1 }, new int[]{ 240, 0 }, () -> Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite("minecraft:blocks/iron_block"));
             }
+
+            // Drill Shaft
+            transform = Matrix4f.setIdentity(new Matrix4f());
+            transform = transform.scale(new Vector3f(1.0f, 1.0f, 1.0f));
+            transform = transform.rotate(rotation, new Vector3f(0, 1, 0));
+            pos = new Vector3f((float)x + 0.5F, (float)y, (float)z + 0.5F);
+            RenderUtils.renderObj(buffer, modelShaft, pos, transform, new float[]{ 1, 1, 1, 1 }, new int[]{ 240, 0 }, () -> textureShaft);
         }
     }
 }

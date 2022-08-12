@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import v0id.api.f0resources.data.F0RTextures;
+import v0id.f0resources.config.F0RConfig;
 import v0id.f0resources.inventory.ContainerDrill;
 import v0id.f0resources.tile.TileDrill;
 
@@ -30,8 +31,14 @@ public class GuiDrill extends GuiContainer
         int i = (this.width - this.xSize) / 2;
         int j = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
+
+        // Energy Bar
         float powerValue = (float)this.tile.energyStorage.getEnergyStored() / this.tile.energyStorage.getMaxEnergyStored();
-        this.drawTexturedModalRect(i + 14, j + 15 + (int)((1 - powerValue) * 62), 176, (int) ((1 - powerValue) * 62), 4, (int) (powerValue * 62));
+        this.drawTexturedModalRect(i + 14, j + 14 + (int)((1 - powerValue) * 62), 176, (int) ((1 - powerValue) * 62), 4, (int) (powerValue * 62));
+
+        // Mining Progress Bar
+        float progressValue = this.tile.minedMultiplier / this.tile.getRequiredProgress();
+        this.drawTexturedModalRect(i + 45, j + 68, 0, 166, (int) (progressValue * 86.0f), 3);
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
@@ -45,6 +52,12 @@ public class GuiDrill extends GuiContainer
         {
             List<String> lines = Lists.newArrayList();
             lines.add(I18n.format("txt.f0r.rfStored", this.tile.energyStorage.getEnergyStored(), this.tile.energyStorage.getMaxEnergyStored()));
+            this.drawHoveringText(lines, mouseX, mouseY);
+        }
+        if (mouseX >= i + 40 && mouseX <= i + 136 && mouseY >= j + 63 && mouseY <= j + 76)
+        {
+            List<String> lines = Lists.newArrayList();
+            lines.add(I18n.format("txt.f0r.miningProgress", this.tile.minedMultiplier, this.tile.getRequiredProgress()));
             this.drawHoveringText(lines, mouseX, mouseY);
         }
     }

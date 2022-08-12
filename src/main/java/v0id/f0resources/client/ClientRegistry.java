@@ -67,7 +67,10 @@ public class ClientRegistry
     public static void onTextureStich(TextureStitchEvent.Pre event)
     {
         TESRDrill.texture = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/drill"));
+        TESRDrill.textureShaft = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/drill_shaft"));
+
         TESRBurnerDrill.texture = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/burner_drill"));
+
         TESRPump.texture = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/fluid_pump"));
 
         TESRLiquidDrill.texture = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/liquid_drill"));

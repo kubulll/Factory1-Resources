@@ -14,6 +14,7 @@ public class F0RTextures
 
     public static final ResourceLocation
             textureDrill                                                                         = new ResourceLocation(F0RRegistryNames.MODID, "textures/blocks/drill.png"),
+            textureDrillShaft                                                                    = new ResourceLocation(F0RRegistryNames.MODID, "textures/blocks/drill_shaft.png"),
             textureBurnerDrill                                                                   = new ResourceLocation(F0RRegistryNames.MODID, "textures/blocks/burner_drill.png"),
             texturePump                                                                          = new ResourceLocation(F0RRegistryNames.MODID, "textures/blocks/fluid_pump.png"),
 

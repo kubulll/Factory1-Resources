@@ -110,3 +110,4 @@ tile.f0-resources.liquid_drill_component.name=Liquid-Fueled Drill Component
 tile.f0-resources.liquid_drill_part.name=Liquid-Fueled Deep Core Drill
 
 txt.f0r.liquidFuelStored=%d/%d mB Fuel
+txt.f0r.miningProgress=Mining Progress: %d/%d

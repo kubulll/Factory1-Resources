@@ -82,7 +82,7 @@ public class F0RConfig
 
     @Config.Comment("Should Factory0 use efficient FastTESR rendering system for it's tiles or the standard one? If you are having weird rendering glitches with the FastTESRs on try setting this to false.")
     @Config.RequiresMcRestart
-    public static boolean useFastTESR = true;
+    public static boolean useFastTESR = false;
 
     @Config.Comment("Should the drills work regardless of the blocks underneath them or do they need specific blocks?")
     public static boolean drillsWorkAnywhere = false;
