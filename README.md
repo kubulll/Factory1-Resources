@@ -2,6 +2,8 @@
 
 This is a fork of Factory0 that updates the mod to run on a later Forge vesion (2847) well as adding various nice-to-have-features.
 
+CurseForge page link: https://www.curseforge.com/minecraft/mc-mods/factory1-resources
+
 <br>
 <br>
 
