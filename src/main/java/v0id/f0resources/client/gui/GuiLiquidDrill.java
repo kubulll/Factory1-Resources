@@ -31,7 +31,7 @@ public class GuiLiquidDrill extends GuiContainer
         int j = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
         float fuelValue = (float)this.tile.fluidTank.getFluidAmount() / this.tile.fluidTank.getCapacity();
-        this.drawTexturedModalRect(i + 14, j + 15 + (int)((1 - fuelValue) * 62), 176, (int) ((1 - fuelValue) * 62), 12, (int) (fuelValue * 62));
+        this.drawTexturedModalRect(i + 14, j + 14 + (int)((1 - fuelValue) * 62), 176, (int) ((1 - fuelValue) * 62), 12, (int) (fuelValue * 62));
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
@@ -41,7 +41,7 @@ public class GuiLiquidDrill extends GuiContainer
         this.renderHoveredToolTip(mouseX, mouseY);
         int i = (this.width - this.xSize) / 2;
         int j = (this.height - this.ySize) / 2;
-        if (mouseX >= i + 7 && mouseX <= i + 25 && mouseY >= j + 7 && mouseY <= j + 83)
+        if (mouseX >= i + 7 && mouseX <= i + 33 && mouseY >= j + 7 && mouseY <= j + 83)
         {
             List<String> lines = Lists.newArrayList();
             lines.add(I18n.format("txt.f0r.liquidFuelStored", this.tile.fluidTank.getFluidAmount(), this.tile.fluidTank.getCapacity()));

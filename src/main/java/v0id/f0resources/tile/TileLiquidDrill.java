@@ -22,6 +22,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.commons.lang3.ArrayUtils;
+import scala.collection.concurrent.Debug;
 import v0id.f0resources.config.F0RConfig;
 import v0id.f0resources.item.ItemDrillHead;
 import v0id.f0resources.network.F0RNetwork;
@@ -77,10 +78,32 @@ public class TileLiquidDrill extends AbstractDrill implements ITickable
 
     @Override
     public boolean consumePower(boolean simulate) {
-        int fuelConsumption = (int) (F0RConfig.liquidDrillFuelConsumption * ((ItemDrillHead) this.getDrillHead().getItem()).material.energyMultiplier);
-        int clampedValue = Math.max(1, Math.min(Integer.MAX_VALUE, fuelConsumption));
-        if (clampedValue <= this.fluidTank.getFluidAmount()) {
-            return this.fluidTank.drain(clampedValue, simulate).amount >= clampedValue;
+
+        boolean validFluid = false;
+
+        for (int i = 0; i < F0RConfig.liquidDrillFuels.length; i++) {
+
+            if (this.fluidTank.getFluidAmount() > 0) {
+                String fluidInsideTank = this.fluidTank.getFluid().getFluid().getName();
+                if (F0RConfig.liquidDrillFuels[i].equals(fluidInsideTank)) {
+                    validFluid = true;
+                    break;
+                } else {
+                    validFluid = false;
+                }
+            } else {
+                return false;
+            }
+        }
+
+        if (validFluid) {
+            int fuelConsumption = (int) (F0RConfig.liquidDrillFuelConsumption * ((ItemDrillHead) this.getDrillHead().getItem()).material.energyMultiplier);
+            int clampedValue = Math.max(1, Math.min(Integer.MAX_VALUE, fuelConsumption));
+            if (clampedValue <= this.fluidTank.getFluidAmount()) {
+                return this.fluidTank.drain(clampedValue, simulate).amount >= clampedValue;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

@@ -70,6 +70,6 @@ public class ClientRegistry
         TESRBurnerDrill.texture = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/burner_drill"));
         TESRPump.texture = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/fluid_pump"));
 
-        TESRDrill.texture = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/liquid_drill"));
+        TESRLiquidDrill.texture = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/liquid_drill"));
     }
 }

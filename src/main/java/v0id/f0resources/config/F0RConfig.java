@@ -27,19 +27,24 @@ public class F0RConfig
 
     @Config.Comment("The amount of fuel that the liquid-fueled drill consumes per tick.")
     @Config.RangeInt(min = 0)
-    public static int liquidDrillFuelConsumption = 4;
+    public static int liquidDrillFuelConsumption = 2;
+
+    @Config.Comment("The list of liquids that will act as valid fuels for the liquid-fueled drill.")
+    public static String[] liquidDrillFuels = new String[]{
+        "lava"
+    };
 
     @Config.Comment("Whether to use energy only when it's actually able to mine blocks, or always when it has energy.")
     public static boolean drillSmartMode = true;
 
     @Config.Comment("The blocks the drills must be placed on to work.")
     public static String[] requiredBlocksDrill = new String[]{
-            "minecraft:stone"
+        "minecraft:stone"
     };
 
     @Config.Comment("The blocks the pump must be placed on to work")
     public static String[] requiredBlocksPump = new String[]{
-            "minecraft:stone"
+        "minecraft:stone"
     };
 
     @Config.Comment("The amount of progress the drill has to accumulate before it produces an ore")
