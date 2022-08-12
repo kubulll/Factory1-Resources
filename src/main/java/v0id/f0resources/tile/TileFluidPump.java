@@ -19,8 +19,10 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.commons.lang3.ArrayUtils;
 import v0id.api.f0resources.world.IChunkData;
 import v0id.api.f0resources.world.IF0RWorld;
@@ -36,6 +38,7 @@ import java.util.Objects;
 
 public class TileFluidPump extends TileMultiblock implements ITickable, IAnimated
 {
+    public static final IForgeRegistry<Block> BLOCK_REGISTRY = GameRegistry.findRegistry(Block.class);
     public EnergyStorage energyStorage = new EnergyStorage(F0RConfig.pumpEnergy);
     public FluidTank fluidTank = new FluidTank(F0RConfig.pumpTankStorage)
     {
@@ -150,7 +153,7 @@ public class TileFluidPump extends TileMultiblock implements ITickable, IAnimate
 
     public boolean checkBase()
     {
-        Block[] block = Arrays.stream(F0RConfig.requiredBlocksPump).filter(s -> !Strings.isNullOrEmpty(s)).map(ResourceLocation::new).map(TileDrill.BLOCK_REGISTRY::getValue).filter(Objects::nonNull).toArray(Block[]::new);
+        Block[] block = Arrays.stream(F0RConfig.requiredBlocksPump).filter(s -> !Strings.isNullOrEmpty(s)).map(ResourceLocation::new).map(BLOCK_REGISTRY::getValue).filter(Objects::nonNull).toArray(Block[]::new);
         for (int dx = -1; dx <= 1; ++dx)
         {
             for (int dz = -1; dz <= 1; ++dz)

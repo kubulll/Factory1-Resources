@@ -20,6 +20,7 @@ import v0id.f0resources.item.ItemDrillHead;
 import v0id.f0resources.tile.TileBurnerDrill;
 import v0id.f0resources.tile.TileDrill;
 import v0id.f0resources.tile.TileFluidPump;
+import v0id.f0resources.tile.TileLiquidDrill;
 
 @Mod.EventBusSubscriber(modid = F0RRegistryNames.MODID, value = { Side.CLIENT })
 public class ClientRegistry
@@ -38,6 +39,8 @@ public class ClientRegistry
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(F0RBlocks.burnerDrillComponent), 0, new ModelResourceLocation(F0RBlocks.burnerDrillComponent.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(F0RBlocks.pumpComponent), 0, new ModelResourceLocation(F0RBlocks.pumpComponent.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(F0RItems.oreVisualizer, 0, new ModelResourceLocation(F0RItems.oreVisualizer.getRegistryName(), "inventory"));
+
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(F0RBlocks.liquidDrillComponent), 0, new ModelResourceLocation(F0RBlocks.liquidDrillComponent.getRegistryName(), "inventory"));
     }
 
     public static void registerRenderers()
@@ -45,6 +48,8 @@ public class ClientRegistry
         net.minecraftforge.fml.client.registry.ClientRegistry.bindTileEntitySpecialRenderer(TileDrill.class, F0RConfig.useFastTESR ? new TESRDrill() : new TESRDrillSlow());
         net.minecraftforge.fml.client.registry.ClientRegistry.bindTileEntitySpecialRenderer(TileBurnerDrill.class, F0RConfig.useFastTESR ? new TESRBurnerDrill() : new TESRBurnerDrillSlow());
         net.minecraftforge.fml.client.registry.ClientRegistry.bindTileEntitySpecialRenderer(TileFluidPump.class, F0RConfig.useFastTESR ? new TESRPump() : new TESRPumpSlow());
+
+        net.minecraftforge.fml.client.registry.ClientRegistry.bindTileEntitySpecialRenderer(TileLiquidDrill.class, F0RConfig.useFastTESR ? new TESRLiquidDrill() : new TESRLiquidDrillSlow());
     }
 
     public static void registerColours()
@@ -64,5 +69,7 @@ public class ClientRegistry
         TESRDrill.texture = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/drill"));
         TESRBurnerDrill.texture = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/burner_drill"));
         TESRPump.texture = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/fluid_pump"));
+
+        TESRLiquidDrill.texture = event.getMap().registerSprite(new ResourceLocation("f0-resources", "blocks/liquid_drill"));
     }
 }

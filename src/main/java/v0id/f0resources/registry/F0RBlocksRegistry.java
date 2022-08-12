@@ -22,7 +22,10 @@ public class F0RBlocksRegistry
                 new BlockBurnerDrillComponent(),
                 new BlockBurnerDrillPart(),
                 new BlockPumpComponent(),
-                new BlockPumpPart()
+                new BlockPumpPart(),
+
+                new BlockLiquidDrillComponent(),
+                new BlockLiquidDrillPart()
         );
     }
 
@@ -32,7 +35,9 @@ public class F0RBlocksRegistry
         event.getRegistry().registerAll(
                 new ItemBlock(F0RBlocks.drillComponent).setRegistryName(F0RBlocks.drillComponent.getRegistryName()),
                 new ItemBlock(F0RBlocks.burnerDrillComponent).setRegistryName(F0RBlocks.burnerDrillComponent.getRegistryName()),
-                new ItemBlock(F0RBlocks.pumpComponent).setRegistryName(F0RBlocks.pumpComponent.getRegistryName())
+                new ItemBlock(F0RBlocks.pumpComponent).setRegistryName(F0RBlocks.pumpComponent.getRegistryName()),
+
+                new ItemBlock(F0RBlocks.liquidDrillComponent).setRegistryName(F0RBlocks.liquidDrillComponent.getRegistryName())
         );
     }
 }

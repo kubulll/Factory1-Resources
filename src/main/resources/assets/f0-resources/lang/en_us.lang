@@ -105,3 +105,8 @@ txt.f0r.drillTooltip.tier=Mining Tier
 txt.f0r.drillTooltip.energyMultiplier=Power Usage Multiplier
 
 item.f0-resources.item.drill_head.f0r.creative.name=Creative Drill Head
+
+tile.f0-resources.liquid_drill_component.name=Liquid-Fueled Drill Component
+tile.f0-resources.liquid_drill_part.name=Liquid-Fueled Deep Core Drill
+
+txt.f0r.liquidFuelStored=%d/%d mB Fuel

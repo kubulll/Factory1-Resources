@@ -23,4 +23,12 @@ public class F0RBlocks
 
     @GameRegistry.ObjectHolder(F0RRegistryNames.pumpPart)
     public static final Block pumpPart = null;
+
+
+
+    @GameRegistry.ObjectHolder(F0RRegistryNames.liquidDrillComponent)
+    public static final Block liquidDrillComponent = null;
+
+    @GameRegistry.ObjectHolder(F0RRegistryNames.liquidDrillPart)
+    public static final Block liquidDrillPart = null;
 }
