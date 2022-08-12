@@ -1,4 +1,5 @@
 # Version 2.1.0
+- Added the liquid-fueled drill and various config values to configure it
 - Gave the Seismic Reader a crafting recipe
 
 # Version 2.0.0
