@@ -25,13 +25,13 @@ public class F0RConfig
     @Config.RangeInt(min = 0)
     public static int liquidDrillTankStorage = 16000;
 
-    @Config.Comment("The amount of fuel that the liquid-fueled drill consumes per tick.")
+    /*@Config.Comment("The amount of fuel that the liquid-fueled drill consumes per tick.")
     @Config.RangeInt(min = 0)
-    public static int liquidDrillFuelConsumption = 2;
+    public static int liquidDrillFuelConsumption = 2;*/
 
-    @Config.Comment("The list of liquids that will act as valid fuels for the liquid-fueled drill.")
+    @Config.Comment("The list of liquids that will act as valid fuels for the liquid-fueled drill with corresponding fuel usage in mb/t.")
     public static String[] liquidDrillFuels = new String[]{
-        "lava"
+        "lava;1", "water;10"
     };
 
     @Config.Comment("Whether to use energy only when it's actually able to mine blocks, or always when it has energy.")

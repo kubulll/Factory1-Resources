@@ -79,31 +79,30 @@ public class TileLiquidDrill extends AbstractDrill implements ITickable
         boolean validFluid = false;
 
         for (int i = 0; i < F0RConfig.liquidDrillFuels.length; i++) {
+            String[] splitStr = F0RConfig.liquidDrillFuels[i].split(";");
 
             if (this.fluidTank.getFluidAmount() > 0) {
                 String fluidInsideTank = this.fluidTank.getFluid().getFluid().getName();
-                if (F0RConfig.liquidDrillFuels[i].equals(fluidInsideTank)) {
+                if (splitStr[0].equals(fluidInsideTank)) {
                     validFluid = true;
-                    break;
                 } else {
                     validFluid = false;
                 }
             } else {
                 return false;
             }
-        }
 
-        if (validFluid) {
-            int fuelConsumption = (int) (F0RConfig.liquidDrillFuelConsumption * ((ItemDrillHead) this.getDrillHead().getItem()).material.energyMultiplier);
-            int clampedValue = Math.max(1, Math.min(Integer.MAX_VALUE, fuelConsumption));
-            if (clampedValue <= this.fluidTank.getFluidAmount()) {
-                return this.fluidTank.drain(clampedValue, simulate).amount >= clampedValue;
-            } else {
-                return false;
+            if (validFluid) {
+                int fuelConsumption = (int) ((float) Float.parseFloat(splitStr[1]) * ((ItemDrillHead) this.getDrillHead().getItem()).material.energyMultiplier);
+                int clampedValue = Math.max(1, Math.min(Integer.MAX_VALUE, fuelConsumption));
+                if (clampedValue <= this.fluidTank.getFluidAmount()) {
+                    return this.fluidTank.drain(clampedValue, simulate).amount >= clampedValue;
+                } else {
+                    return false;
+                }
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
 
